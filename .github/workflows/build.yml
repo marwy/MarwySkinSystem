@@ -24,7 +24,7 @@ jobs:
       - name: Find JAR file
         id: find_jar
         run: |
-         JAR_PATH=$(find build/libs -name "*.jar" | head -n 1)
+         JAR_PATH=$(find build/libs -name "marwyskinsystem-*-sources.jar" -prune -o -name "marwyskinsystem-*.jar" -print | head -n 1)
          echo "jar_path=$JAR_PATH" >> $GITHUB_OUTPUT
 
       - name: Check if release exists
