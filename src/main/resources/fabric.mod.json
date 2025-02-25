@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "id": "marwyskinsystem",
+  "version": "${version}",
+
+  "name": "Marwy Skin System",
+  "description": "Ely.by + mojang skins system",
+  "authors": [
+    "marwy"
+  ],
+  "contact": {
+    "homepage": "",
+    "sources": ""
+  },
+
+	"icon": "icon.png",
+  "license": "CC0-1.0",
+
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+			"marwy.marwyskinsystem.MarwySkinSystem"
+    ],
+		"beforeGameStart": [
+			"marwy.marwyskinsystem.MarwySkinSystem"
+		],
+		"afterGameStart": [
+			"marwy.marwyskinsystem.MarwySkinSystem"
+		],
+		"recipesReady": [
+			"marwy.marwyskinsystem.MarwySkinSystem"
+		]
+	},
+  "mixins": [
+      "marwy.mixins.json"
+  ],
+
+  "depends": {
+		"minecraft": "*",
+    "fabricloader": ">=0.15.5"
+  },
+  "suggests": {
+  }
+}
