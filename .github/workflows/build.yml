@@ -21,6 +21,12 @@ jobs:
         run: chmod +x ./gradlew
       - run: ./gradlew build
 
+      - name: Find JAR file
+        id: find_jar
+        run: |
+         JAR_PATH=$(find build/libs -name "*.jar" | head -n 1)
+         echo "jar_path=$JAR_PATH" >> $GITHUB_OUTPUT
+
       - name: Check if release exists
         id: check_release
         continue-on-error: true
@@ -52,6 +58,6 @@ jobs:
 
       - name: Upload Release Asset
         run: |
-          gh release upload ${{ github.ref_name }} "${{ steps.find_jar.outputs.jar_path }}" --title "Release ${{ github.ref_name }}" --notes "" --target ${{ github.sha }}
+          gh release upload ${{ github.ref_name }} "${{ steps.find_jar.outputs.jar_path }}" --clobber
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
